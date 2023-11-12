@@ -24,6 +24,12 @@ def not_number(a) -> bool:
     else:
         return True
 
+def not_int_number(a) -> bool:
+    if a.isnumeric():
+        return False
+    else:
+        return True
+
 while is_continued:
     print("There are 5 available mathematical operations:")
     print("1. a + b \n2. a - b \n3. a * b \n4. a // b \n5. a!\n6. Exit")
@@ -39,8 +45,8 @@ while is_continued:
 
     elif int(operation) == 5:
         a = input("Enter your number: ")
-        while not_number(a):
-            a = input("Please enter a number: ")
+        while not_int_number(a):
+            a = input("Please enter an integer number: ")
 
         answer = function_factorial(int(a))
     
