@@ -24,7 +24,7 @@ class CommandPrompt:
         print(f'Current directory: {self.current_directory}')
 
     @execution_time
-    def change_directory(self, new_directory): # cd .. 
+    def change_directory(self, new_directory: str): # cd .. 
         try:
             if new_directory == '..':
                 os.chdir('../')
@@ -46,7 +46,7 @@ class CommandPrompt:
             print(file)
 
     @execution_time
-    def create_folder(self, folder_name): # mkdir
+    def create_folder(self, folder_name: str): # mkdir
         try:
             os.mkdir(folder_name)
         except FileExistsError:
@@ -54,14 +54,14 @@ class CommandPrompt:
 
 
     @execution_time
-    def delete_folder(self, folder_name): # rmdir 
+    def delete_folder(self, folder_name: str): # rmdir 
         try:
             os.rmdir(folder_name)
         except FileNotFoundError:
             print('Не удается найти указанный файл.')
 
     @execution_time
-    def rename_folder_file(self, old_name, new_name): # rename 
+    def rename_folder_file(self, old_name: str, new_name: str): # rename 
         try: 
             os.rename(old_name, new_name)
         except FileNotFoundError:
@@ -71,7 +71,7 @@ class CommandPrompt:
 
 
     @execution_time
-    def create_file(self, file_name): # type nul > filename
+    def create_file(self, file_name: str): # type nul > filename
         try:
             with open(os.path.join(self.current_directory, file_name), 'w') as file:
                 file.write('')
@@ -80,14 +80,14 @@ class CommandPrompt:
 
 
     @execution_time
-    def delete_file(self, file_name): # del
+    def delete_file(self, file_name: str): # del
         try:
             os.remove(file_name)
         except FileNotFoundError:
             print('Не удается найти указанный файл.')
 
     @execution_time
-    def read_file(self, file_name): # type
+    def read_file(self, file_name: str): # type
         try: 
             with open(os.path.join(self.current_directory, file_name), 'r') as file:
                 for line in file.readlines():
@@ -101,7 +101,7 @@ class CommandPrompt:
             user_input = input(f'{self.current_directory}>')
             self.is_run = self.run_commands(user_input)
 
-    def run_commands(self, user_input):
+    def run_commands(self, user_input: str):
         command = [i for i in user_input.split(' ') if i != '']
         match command[0]:
         
